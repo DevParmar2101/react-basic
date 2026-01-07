@@ -11,6 +11,10 @@ function MiniTask()
         setName(""); // this will clean the input
     }
 
+    function removeName(index) {
+        const newList = list.filter((_,i) => i !== index);
+        setList(newList);
+    }
     return (
         <div>
             <h2>Name Manager</h2>
@@ -21,7 +25,10 @@ function MiniTask()
             <ul>
                 {
                     list.map((item, index) => (
-                        <li key={index}>{item}</li>
+                        <li key={index}>
+                            {item}
+                            <button onClick={ () => removeName(index)}>X</button>
+                        </li>
                     ))
                 }
             </ul>
