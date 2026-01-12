@@ -12,13 +12,13 @@ import './App.css'
 function App() {
     return (
         <BrowserRouter>
-            <nav style={{ display: "flex", "gap": "10px" }}>
-                <Link to="/">Home</Link> |{" "}
-                <Link to="/state">UseState</Link>
-                <Link to="/props">Props</Link>
-                <Link to="/list">List</Link>
-                <Link to="/task">Mini Task</Link>
-                <Link to="/use-effect">UseEffect</Link>
+            <nav style={{ display: "flex", gap: "10px" }}>
+                <Link to="/">Home</Link> |
+                <Link to="/state">UseState</Link> |
+                <Link to="/props">Props</Link> |
+                <Link to="/list">List</Link> |
+                <Link to="/task">Mini Task</Link> |
+                <Link to="/use-effect">UseEffect</Link> |
             </nav>
             <Routes>
                 <Route path="/" element={<Home />} />
