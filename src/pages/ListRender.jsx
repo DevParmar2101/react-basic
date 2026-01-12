@@ -5,11 +5,11 @@ function ListRender()
     return (
         <div>
             <h2>List rendering</h2>
-            <ul>
+            <ol>
                 {users.map((u, i) => (
-                    <li key={i}>{u}</li>
+                    <li key={i}>{u} </li>
                 ))}
-            </ul>
+            </ol>
         </div>
     );
 }
