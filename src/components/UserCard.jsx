@@ -1,6 +1,6 @@
 function UserCard({ name })
 {
-    return <p>User: {name}</p>;
+    return <p>User Name: {name}</p>;
 }
 
 export default UserCard;
