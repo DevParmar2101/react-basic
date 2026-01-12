@@ -16,7 +16,7 @@ function UseEffect() {
 
     return (
         <div>
-            <h1>useEffect Example</h1>
+            <h2>useEffect Example</h2>
 
             { loading && <p>Loading...</p> }
 

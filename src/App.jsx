@@ -6,6 +6,7 @@ import Props from "./pages/Props.jsx";
 import List from "./pages/ListRender.jsx";
 import Mini from "./pages/MiniTask.jsx";
 import UseEffect from "./pages/UseEffect.jsx";
+import UserEffectTest from "./pages/UseEffectTest.jsx";
 
 import './App.css'
 
@@ -18,7 +19,8 @@ function App() {
                 <Link to="/props">Props</Link> |
                 <Link to="/list">List</Link> |
                 <Link to="/task">Mini Task</Link> |
-                <Link to="/use-effect">UseEffect</Link>
+                <Link to="/use-effect">UseEffect</Link> |
+                <Link to="/user-effect-test">UserEffectTest</Link>
             </nav>
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -27,6 +29,7 @@ function App() {
                 <Route path="/list" element={<List />} />
                 <Route path="/task" element={<Mini />} />
                 <Route path="/use-effect" element={<UseEffect />} />
+                <Route path="/user-effect-test" element={<UserEffectTest />} />
             </Routes>
         </BrowserRouter>
     );
