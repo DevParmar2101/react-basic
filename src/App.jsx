@@ -18,7 +18,7 @@ function App() {
                 <Link to="/props">Props</Link> |
                 <Link to="/list">List</Link> |
                 <Link to="/task">Mini Task</Link> |
-                <Link to="/use-effect">UseEffect</Link> |
+                <Link to="/use-effect">UseEffect</Link>
             </nav>
             <Routes>
                 <Route path="/" element={<Home />} />
