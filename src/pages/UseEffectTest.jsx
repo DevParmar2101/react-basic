@@ -18,7 +18,7 @@ function UseEffectTest() {
     }, [reload]);
 
     function reloadPost() {
-        setReload((prev) => prev + 1); // 👈 always changes
+        setReload((prev) => prev + 1); // always changes
     }
     return (
         <div>
