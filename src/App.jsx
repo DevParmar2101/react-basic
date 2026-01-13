@@ -2,12 +2,13 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 import Home from "./pages/Home";
 import UseState from "./pages/UseState";
-import Props from "./pages/Props.jsx";
-import List from "./pages/ListRender.jsx";
-import Mini from "./pages/MiniTask.jsx";
-import UseEffect from "./pages/UseEffect.jsx";
-import UseEffectTest from "./pages/UseEffectTest.jsx";
-import UseEffectCleanup from "./pages/UseEffectCleanup.jsx";
+import Props from "./pages/Props";
+import List from "./pages/ListRender";
+import Mini from "./pages/MiniTask";
+import UseEffect from "./pages/UseEffect";
+import UseEffectTest from "./pages/UseEffectTest";
+import UseEffectCleanup from "./pages/UseEffectCleanup";
+import ResendButton from "./pages/ResendButton";
 
 import './App.css'
 
@@ -22,7 +23,8 @@ function App() {
                 <Link to="/task">5. Mini Task</Link> |
                 <Link to="/use-effect">6. UseEffect</Link> |
                 <Link to="/use-effect-test">7. UseEffectTest</Link> |
-                <Link to="/use-effect-cleanup">8. UseEffectCleanup</Link>
+                <Link to="/use-effect-cleanup">8. UseEffectCleanup</Link> |
+                <Link to="/resend-button">9. Resend Button</Link>
             </nav>
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -33,6 +35,7 @@ function App() {
                 <Route path="/use-effect" element={<UseEffect />} />
                 <Route path="/use-effect-test" element={<UseEffectTest />} />
                 <Route path="/use-effect-cleanup" element={<UseEffectCleanup />} />
+                <Route path="/resend-button" element={<ResendButton />} />
             </Routes>
         </BrowserRouter>
     );
