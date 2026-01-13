@@ -6,7 +6,8 @@ import Props from "./pages/Props.jsx";
 import List from "./pages/ListRender.jsx";
 import Mini from "./pages/MiniTask.jsx";
 import UseEffect from "./pages/UseEffect.jsx";
-import UserEffectTest from "./pages/UseEffectTest.jsx";
+import UseEffectTest from "./pages/UseEffectTest.jsx";
+import UseEffectCleanup from "./pages/UseEffectCleanup.jsx";
 
 import './App.css'
 
@@ -14,13 +15,14 @@ function App() {
     return (
         <BrowserRouter>
             <nav style={{ display: "flex", gap: "10px" }}>
-                <Link to="/">Home</Link> |
-                <Link to="/state">UseState</Link> |
-                <Link to="/props">Props</Link> |
-                <Link to="/list">List</Link> |
-                <Link to="/task">Mini Task</Link> |
-                <Link to="/use-effect">UseEffect</Link> |
-                <Link to="/user-effect-test">UserEffectTest</Link>
+                <Link to="/">1. Home</Link> |
+                <Link to="/state">2. UseState</Link> |
+                <Link to="/props">3. Props</Link> |
+                <Link to="/list">4. List</Link> |
+                <Link to="/task">5. Mini Task</Link> |
+                <Link to="/use-effect">6. UseEffect</Link> |
+                <Link to="/use-effect-test">7. UseEffectTest</Link> |
+                <Link to="/use-effect-cleanup">8. UseEffectCleanup</Link>
             </nav>
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -29,7 +31,8 @@ function App() {
                 <Route path="/list" element={<List />} />
                 <Route path="/task" element={<Mini />} />
                 <Route path="/use-effect" element={<UseEffect />} />
-                <Route path="/user-effect-test" element={<UserEffectTest />} />
+                <Route path="/use-effect-test" element={<UseEffectTest />} />
+                <Route path="/user-effect-cleanup" element={<UseEffectCleanup />} />
             </Routes>
         </BrowserRouter>
     );
