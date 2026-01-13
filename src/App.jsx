@@ -32,7 +32,7 @@ function App() {
                 <Route path="/task" element={<Mini />} />
                 <Route path="/use-effect" element={<UseEffect />} />
                 <Route path="/use-effect-test" element={<UseEffectTest />} />
-                <Route path="/user-effect-cleanup" element={<UseEffectCleanup />} />
+                <Route path="/use-effect-cleanup" element={<UseEffectCleanup />} />
             </Routes>
         </BrowserRouter>
     );
