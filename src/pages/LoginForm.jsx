@@ -51,7 +51,7 @@ function LoginForm ()
 
     useEffect(() => {
         refs.username.current.focus();
-    });
+    }, []);
 
     function handleChange(e) {
         const { name, value } = e.target;
