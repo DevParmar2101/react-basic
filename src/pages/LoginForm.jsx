@@ -23,25 +23,21 @@ function LoginForm ()
             check : (v) => !v,
             message : "Username is required."
         },
-
         {
             field : "username",
             check : (v) => v.length < 3,
             message : "Minimum 3 characters required for username."
         },
-
         {
             field : "email",
             check : (v) => !v,
             message : "Email is required."
         },
-
         {
             field : "password",
             check : (v) => !v,
             message : "Password is required."
         },
-
         {
             field : "password",
             check : (v) => v.length < 6,
