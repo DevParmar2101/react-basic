@@ -7,17 +7,51 @@ function LoginForm ()
         email : "",
         password : ""
     });
+
     const [success, setSuccess] = useState();
     const [error, setError] = useState("");
-    const emailInputRef = useRef(null);
-    const usernameInputRef = useRef(null);
-    const passwordInputRef = useRef(null);
 
+    const refs = {
+        username : useRef(null),
+        email : useRef(null),
+        password : useRef(null)
+    };
+
+    const validators = [
+        {
+            field : "username",
+            check : (v) => !v,
+            message : "Username is required."
+        },
+
+        {
+            field : "username",
+            check : (v) => v.length < 3,
+            message : "Minimum 3 characters required for username."
+        },
+
+        {
+            field : "email",
+            check : (v) => !v,
+            message : "Email is required."
+        },
+
+        {
+            field : "password",
+            check : (v) => !v,
+            message : "Password is required."
+        },
+
+        {
+            field : "password",
+            check : (v) => v.length < 6,
+            message : "Minimum 6 characters required for password."
+        },
+    ];
 
     useEffect(() => {
-        usernameInputRef.current.focus();
-    }, []);
-
+        refs.username.current.focus();
+    });
 
     function handleChange(e) {
         const { name, value } = e.target;
@@ -32,32 +66,14 @@ function LoginForm ()
     function handleSubmit(e) {
         e.preventDefault();
 
-        if (!form.username) {
-            setError("Username is required.");
-            usernameInputRef.current.focus();
-            return;
-        }
+        for (let rule of validators) {
+            const value = form[rule.field];
 
-        if (form.username.length < 3) {
-            setError("Minimum 3 characters are required for username.");
-            return;
-        }
-
-        if (!form.email) {
-            setError("Email is required.");
-            emailInputRef.current.focus();
-            return;
-        }
-
-        if (!form.password) {
-            setError("Password is required.");
-            passwordInputRef.current.focus();
-            return;
-        }
-
-        if (form.password.length < 6) {
-            setError("Minimum 6 characters are required for password.");
-            return;
+            if (rule.check(value)) {
+                setError(rule.message);
+                refs[rule.field].current.focus();
+                return;
+            }
         }
 
         setError("");
@@ -69,6 +85,8 @@ function LoginForm ()
             email: "",
             password: ""
         });
+
+        Object.values(refs).forEach(ref => ref.current.blur());
     }
 
     return (
@@ -80,15 +98,15 @@ function LoginForm ()
 
             <form onSubmit={handleSubmit}>
                 <div style={{ marginBottom: "5px" }}>
-                    <input type="text" ref={usernameInputRef} name="username" placeholder="Username" value={form.username} onChange={handleChange} />
+                    <input type="text" ref={refs.username} name="username" placeholder="Username" value={form.username} onChange={handleChange} />
                 </div>
 
                 <div style={{marginBottom: "5px" }}>
-                    <input type="email" ref={emailInputRef} name="email" placeholder="Email" value={form.email} onChange={handleChange} />
+                    <input type="email" ref={refs.email} name="email" placeholder="Email" value={form.email} onChange={handleChange} />
                 </div>
 
                 <div style={{marginBottom: "5px" }}>
-                    <input type="password" ref={passwordInputRef} name="password" placeholder="Password" value={form.password} onChange={handleChange} />
+                    <input type="password" ref={refs.password} name="password" placeholder="Password" value={form.password} onChange={handleChange} />
                 </div>
 
                 <button type="submit">Login</button>
