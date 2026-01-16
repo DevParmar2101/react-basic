@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState, useRef, useEffect } from "react";
 
 function LoginForm ()
 {
@@ -7,10 +7,17 @@ function LoginForm ()
         email : "",
         password : ""
     });
-
     const [success, setSuccess] = useState();
-
     const [error, setError] = useState("");
+    const emailInputRef = useRef(null);
+    const usernameInputRef = useRef(null);
+    const passwordInputRef = useRef(null);
+
+
+    useEffect(() => {
+        usernameInputRef.current.focus();
+    }, []);
+
 
     function handleChange(e) {
         const { name, value } = e.target;
@@ -25,8 +32,9 @@ function LoginForm ()
     function handleSubmit(e) {
         e.preventDefault();
 
-        if (!form.username || !form.email || !form.password) {
-            setError("All fields are required.");
+        if (!form.username) {
+            setError("Username is required.");
+            usernameInputRef.current.focus();
             return;
         }
 
@@ -34,6 +42,19 @@ function LoginForm ()
             setError("Minimum 3 characters are required for username.");
             return;
         }
+
+        if (!form.email) {
+            setError("Email is required.");
+            emailInputRef.current.focus();
+            return;
+        }
+
+        if (!form.password) {
+            setError("Password is required.");
+            passwordInputRef.current.focus();
+            return;
+        }
+
         if (form.password.length < 6) {
             setError("Minimum 6 characters are required for password.");
             return;
@@ -59,15 +80,15 @@ function LoginForm ()
 
             <form onSubmit={handleSubmit}>
                 <div style={{ marginBottom: "5px" }}>
-                    <input type="text" name="username" placeholder="Username" value={form.username} onChange={handleChange} />
+                    <input type="text" ref={usernameInputRef} name="username" placeholder="Username" value={form.username} onChange={handleChange} />
                 </div>
 
                 <div style={{marginBottom: "5px" }}>
-                    <input type="email" name="email" placeholder="Email" value={form.email} onChange={handleChange} />
+                    <input type="email" ref={emailInputRef} name="email" placeholder="Email" value={form.email} onChange={handleChange} />
                 </div>
 
                 <div style={{marginBottom: "5px" }}>
-                    <input type="password" name="password" placeholder="Password" value={form.password} onChange={handleChange} />
+                    <input type="password" ref={passwordInputRef} name="password" placeholder="Password" value={form.password} onChange={handleChange} />
                 </div>
 
                 <button type="submit">Login</button>
