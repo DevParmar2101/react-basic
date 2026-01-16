@@ -8,6 +8,8 @@ function LoginForm ()
         password : ""
     });
 
+    const [success, setSuccess] = useState();
+
     const [error, setError] = useState("");
 
     function handleChange(e) {
@@ -17,25 +19,43 @@ function LoginForm ()
             ...prev,
             [name] : value
         }));
+        setError("");
     }
 
     function handleSubmit(e) {
         e.preventDefault();
 
         if (!form.username || !form.email || !form.password) {
-            setError("All fields are required");
+            setError("All fields are required.");
+            return;
+        }
+
+        if (form.username.length < 3) {
+            setError("Minimum 3 characters are required for username.");
+            return;
+        }
+        if (form.password.length < 6) {
+            setError("Minimum 6 characters are required for password.");
             return;
         }
 
         setError("");
+        setSuccess("Login successful!");
         console.log("Form Submitted:", form);
+
+        setForm({
+            username: "",
+            email: "",
+            password: ""
+        });
     }
 
     return (
         <div>
             <h2>Login Form</h2>
 
-            {error && <p style={{ color: "red" }}>{error}</p> }
+            { error && <p style={{ color: "red" }}>{error}</p> }
+            { success && <p style={{ color: "green" }}>{success}</p> }
 
             <form onSubmit={handleSubmit}>
                 <div style={{ marginBottom: "5px" }}>
