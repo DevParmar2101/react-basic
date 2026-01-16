@@ -17,6 +17,20 @@ function LoginForm ()
         password : useRef(null)
     };
 
+    const validators = {
+        username : [
+            v => !v && "Username is required.",
+            v => v.length < 3 && "Minimum 3 characters required for username.",
+        ],
+        email : [
+            v => !v && "Email is required.",
+        ],
+        password: [
+            v => !v && "Password is required.",
+            v => v.length < 3 && "Minimum 6 characters required for password.",
+        ],
+    };
+/*
     const validators = [
         {
             field : "username",
@@ -44,6 +58,7 @@ function LoginForm ()
             message : "Minimum 6 characters required for password."
         },
     ];
+*/
 
     useEffect(() => {
         refs.username.current.focus();
@@ -62,13 +77,25 @@ function LoginForm ()
     function handleSubmit(e) {
         e.preventDefault();
 
-        for (let rule of validators) {
+/*        for (let rule of validators) {
             const value = form[rule.field];
 
             if (rule.check(value)) {
                 setError(rule.message);
                 refs[rule.field].current.focus();
                 return;
+            }
+        }*/
+
+        for (let field in validators) {
+            for (let check of validators[field]) {
+                const errorMessage = check(form[field]);
+
+                if (errorMessage) {
+                    setError(errorMessage);
+                    refs[field].current.focus();
+                    return;
+                }
             }
         }
 
