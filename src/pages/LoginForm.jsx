@@ -3,6 +3,7 @@ import {useState} from "react";
 function LoginForm ()
 {
     const [form, setForm] = useState({
+        username : "",
         email : "",
         password : ""
     });
@@ -21,7 +22,7 @@ function LoginForm ()
     function handleSubmit(e) {
         e.preventDefault();
 
-        if (!form.email || !form.password) {
+        if (!form.username || !form.email || !form.password) {
             setError("All fields are required");
             return;
         }
@@ -37,10 +38,15 @@ function LoginForm ()
             {error && <p style={{ color: "red" }}>{error}</p> }
 
             <form onSubmit={handleSubmit}>
-                <div>
+                <div style={{ marginBottom: "5px" }}>
+                    <input type="text" name="username" placeholder="Username" value={form.username} onChange={handleChange} />
+                </div>
+
+                <div style={{marginBottom: "5px" }}>
                     <input type="email" name="email" placeholder="Email" value={form.email} onChange={handleChange} />
                 </div>
-                <div>
+
+                <div style={{marginBottom: "5px" }}>
                     <input type="password" name="password" placeholder="Password" value={form.password} onChange={handleChange} />
                 </div>
 
