@@ -9,12 +9,14 @@ import UseEffect from "./pages/UseEffect";
 import UseEffectTest from "./pages/UseEffectTest";
 import UseEffectCleanup from "./pages/UseEffectCleanup";
 import ResendButton from "./pages/ResendButton";
+import LoginForm from "./pages/LoginForm";
 
 import './App.css'
 
 function App() {
     return (
         <BrowserRouter>
+
             <nav style={{ display: "flex", gap: "10px" }}>
                 <Link to="/">1. Home</Link> |
                 <Link to="/state">2. UseState</Link> |
@@ -24,8 +26,10 @@ function App() {
                 <Link to="/use-effect">6. UseEffect</Link> |
                 <Link to="/use-effect-test">7. UseEffectTest</Link> |
                 <Link to="/use-effect-cleanup">8. UseEffectCleanup</Link> |
-                <Link to="/resend-button">9. Resend Button</Link>
+                <Link to="/resend-button">9. Resend Button</Link> |
+                <Link to="/login-form">10. Login Form</Link>
             </nav>
+
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/state" element={<UseState />} />
@@ -36,7 +40,9 @@ function App() {
                 <Route path="/use-effect-test" element={<UseEffectTest />} />
                 <Route path="/use-effect-cleanup" element={<UseEffectCleanup />} />
                 <Route path="/resend-button" element={<ResendButton />} />
+                <Route path="/login-form" element={<LoginForm />} />
             </Routes>
+
         </BrowserRouter>
     );
 }
